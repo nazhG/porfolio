@@ -1,0 +1,5 @@
+{
+  "name": "porfolio",
+  "module": "./build/index.html",
+  "type": "module"
+}
