@@ -44,8 +44,9 @@ imagen1.classList.add("hide");
 imagen2.classList.add("hide");
 imagen3.classList.add("hide");
 
-/// scroll to element on click
+/// scroll to element on click on the menu & main grid
 const icons = document.querySelectorAll(".move-to");
+console.log(icons);
 
 icons.forEach((icon) => {
     icon.onclick = (event) => {
@@ -67,3 +68,24 @@ icons.forEach((icon) => {
         });
     }
 });
+
+/// scroll to element on click on titles
+const tittles = document.querySelectorAll("h2");
+tittles.forEach((title) => {
+    title.onclick = (event) => {
+        const section = title.parentElement;
+
+        // if the window is smaller than 768px, the scroll will need to be adjusted
+        let adjustment = 0;
+        if (window.innerWidth < 768) {
+            const tittleHeight = title.getBoundingClientRect().height;
+            adjustment = tittleHeight + 20;
+        }
+
+        mainGrid.scrollTo({
+            top: section.offsetTop - adjustment,
+            behavior: "smooth"
+        });
+    }
+});
+
