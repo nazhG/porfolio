@@ -53,8 +53,16 @@ icons.forEach((icon) => {
         const elementID = event.srcElement.href.split("#")[1];
         const elementToScrollTo = document.querySelector(`#${elementID}`);
 
+        // if the window is smaller than 768px, the scroll will need to be adjusted
+        let adjustment = 0;
+        if (window.innerWidth < 768) {
+            const tittle = document.querySelector("#about h2");
+            const tittleHeight = tittle.getBoundingClientRect().height;
+            adjustment = tittleHeight + 20;
+        }
+
         mainGrid.scrollTo({
-            top: elementToScrollTo.offsetTop,
+            top: elementToScrollTo.offsetTop - adjustment,
             behavior: "smooth"
         });
     }
