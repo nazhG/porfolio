@@ -241,9 +241,6 @@ section#contact {
 .my-card {
   width: 100%;
   height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
 .card {
@@ -276,35 +273,43 @@ section#contact {
   justify-content: space-between;
 }
 
-.my-card .tittle {
-  margin: 0;
-  flex-grow: 1;
+.card-content {
+  display: grid;
+  grid:
+    "title title title img" 1fr
+    "desc desc desc desc" 1fr
+    / 1fr 1fr 1fr 1fr;
+  gap: 1rem;
 }
 
-.my-card .profile {
+.card-content .tittle {
+  grid-area: title;
+  margin: 0;
+}
+
+.card-content .profile {
+  grid-area: img;
   border-radius: 50%;
   padding: 0.1rem;
   border: 3rem solid var(--text);
   z-index: -10;
-  flex-grow: 1;
+  width: 200px;
 }
 
-.my-card .short-desc {
-  align-self: center;
-  flex-grow: 2;
+.card-content .short-desc {
+  grid-area: desc;
+  width: 100% ;
+  justify-content: center;
+  height: auto;
 }
 
 
-.my-card .tittle b {
+.card-content .tittle b {
   color: var(--base);
 }
 
-.my-card .tittle span {
+.card-content .tittle span {
   color: var(--text-light);
-}
-
-.card-img {
-  width: 30%;
 }
 
 #about > div {
@@ -676,7 +681,6 @@ textarea::-webkit-scrollbar-thumb {
     font-size: 5rem;
   }
   .my-card .short-desc {
-    width: 65%;
     display: flex;
     padding: 0 2rem;
     font-size: 1.5rem;
